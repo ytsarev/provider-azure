@@ -9,9 +9,15 @@ metadata:
     meta.upbound.io/example-id: containerapp/v1beta2/containerapp
   labels:
     testing.upbound.io/example-name: example
-  name: example
+  name: example-with-secret
 spec:
   forProvider:
+    secret:
+      - name: test-app-secret
+        valueSecretRef:
+          key: app-secret-value
+          name: app-secret
+          namespace: default
     containerAppEnvironmentIdSelector:
       matchLabels:
         testing.upbound.io/example-name: example
@@ -20,6 +26,8 @@ spec:
         testing.upbound.io/example-name: example
     revisionMode: Single
     template:
+      maxReplicas: 2
+      minReplicas: 0
       container:
       - cpu: 0.25
         image: mcr.microsoft.com/azuredocs/containerapps-helloworld:latest
@@ -78,3 +86,14 @@ metadata:
 spec:
   forProvider:
     location: West Europe
+
+---
+
+apiVersion: v1
+data:
+  app-secret-value: c3VwZXJzZWNyZXR2YWx1ZQ==
+kind: Secret
+metadata:
+  name: test-app-secret
+  namespace: default
+type: Opaque

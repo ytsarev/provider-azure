@@ -3304,25 +3304,11 @@ spec:
                             The ID of a Key Vault secret. This can be a versioned or version-less ID.
                             The Key Vault Secret ID. Could be either one of `id` or `versionless_id`.
                           type: string
-                        nameSecretRef:
+                        name:
                           description: |-
                             The secret name.
                             The secret name.
-                          properties:
-                            key:
-                              description: The key to select.
-                              type: string
-                            name:
-                              description: Name of the secret.
-                              type: string
-                            namespace:
-                              description: Namespace of the secret.
-                              type: string
-                          required:
-                          - key
-                          - name
-                          - namespace
-                          type: object
+                          type: string
                         valueSecretRef:
                           description: |-
                             The value for this secret.
@@ -4152,25 +4138,11 @@ spec:
                             The ID of a Key Vault secret. This can be a versioned or version-less ID.
                             The Key Vault Secret ID. Could be either one of `id` or `versionless_id`.
                           type: string
-                        nameSecretRef:
+                        name:
                           description: |-
                             The secret name.
                             The secret name.
-                          properties:
-                            key:
-                              description: The key to select.
-                              type: string
-                            name:
-                              description: Name of the secret.
-                              type: string
-                            namespace:
-                              description: Namespace of the secret.
-                              type: string
-                          required:
-                          - key
-                          - name
-                          - namespace
-                          type: object
+                          type: string
                         valueSecretRef:
                           description: |-
                             The value for this secret.
@@ -4190,8 +4162,6 @@ spec:
                           - name
                           - namespace
                           type: object
-                      required:
-                      - nameSecretRef
                       type: object
                     type: array
                   tags:
@@ -5132,6 +5102,11 @@ spec:
                           description: |-
                             The ID of a Key Vault secret. This can be a versioned or version-less ID.
                             The Key Vault Secret ID. Could be either one of `id` or `versionless_id`.
+                          type: string
+                        name:
+                          description: |-
+                            The secret name.
+                            The secret name.
                           type: string
                       type: object
                     type: array
